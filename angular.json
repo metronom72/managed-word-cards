@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+              "node_modules/@clr/icons/clr-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,6 +98,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@clr/icons/clr-icons.min.css",
+              "node_modules/@clr/ui/clr-ui.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "managed-word-cards"
+    }
+  },
+  "defaultProject": "managed-word-cards",
+  "cli": {
+    "analytics": "2df683ef-5cbc-4fa4-bf6d-1671158b16bc"
+  }
 }
