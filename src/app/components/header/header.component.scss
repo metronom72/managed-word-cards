@@ -1,5 +1,14 @@
-.without-icon {
-  //label {
-  //  display: none;
-  //}
+.search {
+  padding-left: 20px;
+  input {
+    padding: 5px 10px;
+    border: 1px solid hsl(198, 0%, 70%);
+    border-radius: 2px;
+  }
+  &:after {
+    display: none !important;
+  }
+}
+a {
+  color: white;
 }
