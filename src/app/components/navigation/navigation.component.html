@@ -1,1 +1,12 @@
-<p>navigation works!</p>
+<clr-tree>
+  <clr-tree-node clrExpanded="true">
+    Уроки
+    <clr-tree-node *ngFor="let lesson of lessons">
+      <button
+        class="clr-treenode-link"
+      >
+        {{lesson.title}}
+      </button>
+    </clr-tree-node>
+  </clr-tree-node>
+</clr-tree>
