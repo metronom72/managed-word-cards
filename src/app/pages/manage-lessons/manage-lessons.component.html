@@ -15,7 +15,7 @@
     <label for="target_language">Язык перевода</label>
     <input clrInput type="text" name="originalLanguage" id="original_language" />
   </clr-input-container>
-<!--  <app-manage-group></app-manage-group>-->
+  <app-manage-group *ngFor="let group of groups" [group]="group"></app-manage-group>
   <div>
     <button class="btn btn-sm btn-primary">Сохранить</button>
   </div>

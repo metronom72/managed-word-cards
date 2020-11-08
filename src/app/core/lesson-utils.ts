@@ -8,7 +8,11 @@ export const generateLessons = (words: Word[], capacity: number): Lesson[] => {
   const lessons = [];
   while (words.length > 0) {
     lessons.push({
-      words: words.splice(0, capacity),
+      words: words.splice(0, capacity).map((word, index) => ({
+        ...word,
+        index,
+        id: uuid(),
+      })),
       title: '',
       id: uuid(),
     });

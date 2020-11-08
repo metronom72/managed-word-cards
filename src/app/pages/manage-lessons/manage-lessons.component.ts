@@ -9,7 +9,7 @@ import {Lesson} from '../../core/lesson';
   styleUrls: ['./manage-lessons.component.scss']
 })
 export class ManageLessonsComponent implements OnInit {
-  public lessons: Lesson[] = [];
+  public groups: Lesson[] = [];
   onSelect = (file) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -17,13 +17,13 @@ export class ManageLessonsComponent implements OnInit {
         header: true
       });
       console.log(rows);
-      this.lessons = generateLessons(rows.data, 20);
+      this.groups = generateLessons(rows.data, 20);
     };
     reader.readAsText(file);
   }
 
   onRemove = (event) => {
-    this.lessons = [];
+    this.groups = [];
   }
 
   constructor() { }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import words from '../../data/words.json';
+import {Component, Input, OnInit} from '@angular/core';
+import { Word } from 'src/app/core/word';
 
 @Component({
   selector: 'app-managed-table',
@@ -7,11 +7,14 @@ import words from '../../data/words.json';
   styleUrls: ['./managed-table.component.scss']
 })
 export class ManagedTableComponent implements OnInit {
-
-  words = words.slice(0, 10);
+  @Input() words: Word[] = [];
 
   constructor() { }
 
   ngOnInit(): void { }
 
+  removeWord = (id: string) => {
+    console.log(id, this.words);
+    this.words = this.words.filter((word) => word.id !== id);
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Group} from '../../core/group';
 
 @Component({
   selector: 'app-manage-group',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-group.component.scss']
 })
 export class ManageGroupComponent implements OnInit {
+  @Input() group: Group = null;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }
