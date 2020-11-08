@@ -17,6 +17,7 @@ import { CardFooterComponent } from './components/card-footer/card-footer.compon
 import { CardActionsComponent } from './components/card-actions/card-actions.component';
 import { ManagedTableComponent } from './components/managed-table/managed-table.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { ManageGroupComponent } from './components/manage-group/manage-group.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     CardFooterComponent,
     CardActionsComponent,
     ManagedTableComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ManageGroupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { parse } from 'papaparse';
+import {generateLessons} from '../../core/lesson-utils';
+import {Lesson} from '../../core/lesson';
 
 @Component({
   selector: 'app-manage-lessons',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-lessons.component.scss']
 })
 export class ManageLessonsComponent implements OnInit {
+  public lessons: Lesson[] = [];
+  onSelect = (file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const rows = parse(event.target.result, {
+        header: true
+      });
+      console.log(rows);
+      this.lessons = generateLessons(rows.data, 20);
+    };
+    reader.readAsText(file);
+  }
+
+  onRemove = (event) => {
+    this.lessons = [];
+  }
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }

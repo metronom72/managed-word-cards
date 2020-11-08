@@ -1,5 +1,8 @@
 <form clrForm>
-  <app-file-upload></app-file-upload>
+  <app-file-upload
+    (selectFile)="onSelect($event)"
+    (removeFile)="onRemove($event)"
+  ></app-file-upload>
   <clr-input-container>
     <label for="title">Введите название</label>
     <input clrInput type="text" name="title" id="title" />
@@ -9,17 +12,10 @@
     <input clrInput type="text" name="targetLanguage" id="target_language" />
   </clr-input-container>
   <clr-input-container>
-    <label for="123123">Название урока</label>
-    <input clrInput type="text" name="lessons[0]" id="123123" />
+    <label for="target_language">Язык перевода</label>
+    <input clrInput type="text" name="originalLanguage" id="original_language" />
   </clr-input-container>
-  <app-managed-table></app-managed-table>
-  <hr />
-  <clr-input-container>
-    <label for="123123">Название урока</label>
-    <input clrInput type="text" name="lessons[0]" id="123123" />
-  </clr-input-container>
-  <app-managed-table></app-managed-table>
-  <hr />
+<!--  <app-manage-group></app-manage-group>-->
   <div>
     <button class="btn btn-sm btn-primary">Сохранить</button>
   </div>

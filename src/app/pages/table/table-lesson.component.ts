@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import words from '../../data/words.json';
+import {Group} from '../../core/group';
 
 @Component({
   selector: 'app-table-lesson',
@@ -8,7 +9,7 @@ import words from '../../data/words.json';
 })
 export class TableLessonComponent implements OnInit {
 
-  words = words;
+  words: Group = null;
 
   constructor() { }
 

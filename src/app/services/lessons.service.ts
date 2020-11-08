@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import words from '../data/words.json';
+import {Lesson} from '../core/lesson';
 
 @Injectable({
   providedIn: 'root'
@@ -7,5 +7,5 @@ import words from '../data/words.json';
 export class LessonsService {
   constructor() { }
 
-  public lessons: [] = words;
+  public lessons: Lesson[] = [];
 }
