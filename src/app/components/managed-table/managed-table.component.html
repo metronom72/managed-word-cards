@@ -7,13 +7,13 @@
     <clr-dg-cell class="cell cell--id">{{word.index + 1}}</clr-dg-cell>
     <clr-dg-cell class="cell">
       <clr-input-helper>
-        <input [value]="word.german" reqiured />
+        <input [value]="word.original" reqiured />
         <clr-control-error>Обязательное поле</clr-control-error>
       </clr-input-helper>
     </clr-dg-cell>
     <clr-dg-cell class="cell">
       <clr-input-helper>
-        <input [value]="word.russian" reqiured />
+        <input [value]="word.target" reqiured />
         <clr-control-error>Обязательное поле</clr-control-error>
       </clr-input-helper>
     </clr-dg-cell>
@@ -22,3 +22,7 @@
     </clr-dg-cell>
   </clr-dg-row>
 </clr-datagrid>
+
+<p6 (click)="addWord()">
+  Добавить карточку
+</p6>

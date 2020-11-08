@@ -8,6 +8,8 @@ export const generateLessons = (words: Word[], capacity: number): Lesson[] => {
     lessons.push({
       words: words.splice(0, capacity).map((word, index) => ({
         ...word,
+        original: word.russian,
+        target: word.german,
         index,
         id: uuid(),
       })),

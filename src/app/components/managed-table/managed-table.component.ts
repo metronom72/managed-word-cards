@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Word } from 'src/app/core/word';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-managed-table',
@@ -15,5 +16,14 @@ export class ManagedTableComponent implements OnInit {
 
   removeWord = (id: string) => {
     this.words = this.words.filter((word) => word.id !== id);
+  }
+
+  addWord = () => {
+    this.words.push({
+      original: '',
+      target: '',
+      id: uuid(),
+      index: this.words.length,
+    });
   }
 }
