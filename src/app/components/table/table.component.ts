@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import words from '../../data/words.json';
 
 @Component({
   selector: 'app-table',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
+  words = words;
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }

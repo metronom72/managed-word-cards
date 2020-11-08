@@ -12,9 +12,9 @@ import { TableComponent } from './components/table/table.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { ManageComponent } from './pages/manage/manage.component';
 import { ManageLessonsComponent } from './pages/manage-lessons/manage-lessons.component';
-import { CardHeaderComponent } from './card-header/card-header.component';
-import { CardFooterComponent } from './card-footer/card-footer.component';
-import { CardActionsComponent } from './card-actions/card-actions.component';
+import { CardHeaderComponent } from './components/card-header/card-header.component';
+import { CardFooterComponent } from './components/card-footer/card-footer.component';
+import { CardActionsComponent } from './components/card-actions/card-actions.component';
 
 @NgModule({
   declarations: [

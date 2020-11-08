@@ -1,1 +1,10 @@
-<p>table works!</p>
+<app-card-header></app-card-header>
+
+<clr-datagrid>
+  <clr-dg-column>german</clr-dg-column>
+  <clr-dg-column>translation</clr-dg-column>
+  <clr-dg-row *ngFor="let word of words">
+    <clr-dg-cell style="width: 300px">{{word.german}}</clr-dg-cell>
+    <clr-dg-cell style="width: 300px">{{word.russian}}</clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>
