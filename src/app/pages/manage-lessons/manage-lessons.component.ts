@@ -16,7 +16,6 @@ export class ManageLessonsComponent implements OnInit {
       const rows = parse(event.target.result, {
         header: true
       });
-      console.log(rows);
       this.groups = generateLessons(rows.data, 20);
     };
     reader.readAsText(file);

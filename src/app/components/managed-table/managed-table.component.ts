@@ -14,7 +14,6 @@ export class ManagedTableComponent implements OnInit {
   ngOnInit(): void { }
 
   removeWord = (id: string) => {
-    console.log(id, this.words);
     this.words = this.words.filter((word) => word.id !== id);
   }
 }

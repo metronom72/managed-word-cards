@@ -3,8 +3,6 @@ import {Lesson} from './lesson';
 import {v4 as uuid} from 'uuid';
 
 export const generateLessons = (words: Word[], capacity: number): Lesson[] => {
-  console.log(words, capacity);
-
   const lessons = [];
   while (words.length > 0) {
     lessons.push({
