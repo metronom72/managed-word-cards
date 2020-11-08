@@ -12,6 +12,9 @@ import { TableComponent } from './components/table/table.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { ManageComponent } from './pages/manage/manage.component';
 import { ManageLessonsComponent } from './pages/manage-lessons/manage-lessons.component';
+import { CardHeaderComponent } from './card-header/card-header.component';
+import { CardFooterComponent } from './card-footer/card-footer.component';
+import { CardActionsComponent } from './card-actions/card-actions.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ManageLessonsComponent } from './pages/manage-lessons/manage-lessons.co
     TableComponent,
     LessonComponent,
     ManageComponent,
-    ManageLessonsComponent
+    ManageLessonsComponent,
+    CardHeaderComponent,
+    CardFooterComponent,
+    CardActionsComponent
   ],
   imports: [
     BrowserModule,
