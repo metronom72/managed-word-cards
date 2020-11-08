@@ -1,0 +1,18 @@
+<clr-datagrid>
+  <clr-dg-column class="cell">german</clr-dg-column>
+  <clr-dg-column class="cell">translation</clr-dg-column>
+  <clr-dg-row *ngFor="let word of words">
+    <clr-dg-cell class="cell">
+      <clr-input-helper>
+        <input [value]="word.german" reqiured />
+        <clr-control-error>Обязательное поле</clr-control-error>
+      </clr-input-helper>
+    </clr-dg-cell>
+    <clr-dg-cell class="cell">
+      <clr-input-helper>
+        <input [value]="word.russian" reqiured />
+        <clr-control-error>Обязательное поле</clr-control-error>
+      </clr-input-helper>
+    </clr-dg-cell>
+  </clr-dg-row>
+</clr-datagrid>

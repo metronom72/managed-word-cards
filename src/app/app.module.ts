@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ClarityModule } from '@clr/angular';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClarityModule } from '@clr/angular';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CardComponent } from './components/card/card.component';
-import { TableComponent } from './components/table/table.component';
+import { TableLessonComponent } from './pages/table/table-lesson.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
-import { ManageComponent } from './pages/manage/manage.component';
 import { ManageLessonsComponent } from './pages/manage-lessons/manage-lessons.component';
 import { CardHeaderComponent } from './components/card-header/card-header.component';
 import { CardFooterComponent } from './components/card-footer/card-footer.component';
 import { CardActionsComponent } from './components/card-actions/card-actions.component';
+import { ManagedTableComponent } from './components/managed-table/managed-table.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -22,19 +24,21 @@ import { CardActionsComponent } from './components/card-actions/card-actions.com
     HeaderComponent,
     NavigationComponent,
     CardComponent,
-    TableComponent,
+    TableLessonComponent,
     LessonComponent,
-    ManageComponent,
     ManageLessonsComponent,
     CardHeaderComponent,
     CardFooterComponent,
-    CardActionsComponent
+    CardActionsComponent,
+    ManagedTableComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,15 @@
-<p>manage-lessons works!</p>
+<form clrForm>
+  <app-file-upload></app-file-upload>
+  <clr-input-container>
+    <label for="title">Введите название</label>
+    <input clrInput type="text" name="title" id="title" />
+  </clr-input-container>
+  <clr-input-container>
+    <label for="target_language">Язык оригинала</label>
+    <input clrInput type="text" name="targetLanguage" id="target_language" />
+  </clr-input-container>
+  <app-managed-table></app-managed-table>
+  <div>
+    <button class="btn btn-sm btn-primary">Сохранить</button>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+  <ngx-dropzone-label>Upload new file</ngx-dropzone-label>
+  <ngx-dropzone-preview *ngIf="file" [removable]="true" (removed)="onRemove(f)">
+    <ngx-dropzone-label>{{ file.name }} ({{ file.type }})</ngx-dropzone-label>
+  </ngx-dropzone-preview>
+</ngx-dropzone>

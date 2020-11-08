@@ -23,6 +23,7 @@
     "@clr/icons": "4.0.5",
     "@clr/ui": "4.0.5",
     "@webcomponents/webcomponentsjs": "^2.0.0",
+    "ngx-dropzone": "^2.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "uuid": "^8.3.1",
