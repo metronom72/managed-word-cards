@@ -6,7 +6,7 @@ export const generateLessons = (words: Word[], capacity: number): Lesson[] => {
   const lessons = [];
   while (words.length > 0) {
     lessons.push({
-      words: words.splice(0, capacity).map((word, index) => ({
+      words: words.splice(0, capacity).map((word: any, index) => ({
         ...word,
         original: word.russian,
         target: word.german,

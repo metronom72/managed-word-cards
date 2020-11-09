@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Word } from 'src/app/core/word';
+import { Word } from '../../core/word';
 import { v4 as uuid } from 'uuid';
 
 @Component({

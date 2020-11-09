@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { CardComponent } from './components/card/card.component';
-import { TableLessonComponent } from './pages/table/table-lesson.component';
+import { TableLessonComponent } from './pages/table-lesson/table-lesson.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { ManageLessonsComponent } from './pages/manage-lessons/manage-lessons.component';
 import { CardHeaderComponent } from './components/card-header/card-header.component';

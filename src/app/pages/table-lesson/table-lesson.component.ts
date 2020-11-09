@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import words from '../../data/words.json';
 import {Group} from '../../core/group';
 
 @Component({
