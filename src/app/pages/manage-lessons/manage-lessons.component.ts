@@ -3,7 +3,7 @@ import { parse } from 'papaparse';
 import {generateGroups} from '../../core/lesson-utils';
 import {Lesson} from '../../core/lesson';
 import {generatePagination, Pagination} from '../../core/pagination';
-import {FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Group} from '../../core/group';
 
 @Component({
@@ -25,7 +25,7 @@ export class ManageLessonsComponent implements OnInit {
     disabled: true,
   };
 
-  public form: Lesson = {
+  lesson: Lesson = {
     title: '',
     originalLanguage: '',
     targetLanguage: '',
@@ -38,14 +38,14 @@ export class ManageLessonsComponent implements OnInit {
       const rows = parse(event.target.result, {
         header: true
       }).data;
-      this.form.groups = generateGroups(rows, 20);
-      this.pagination = generatePagination(this.form.groups.length, 1, 4);
+      this.lesson.groups = generateGroups(rows, 20);
+      this.pagination = generatePagination(this.lesson.groups.length, 1, 4);
     };
     reader.readAsText(file);
   }
 
   onRemove = (event) => {
-    this.form.groups = [];
+    this.lesson.groups = [];
     this.pagination = generatePagination(0, 1, 4);
   }
 

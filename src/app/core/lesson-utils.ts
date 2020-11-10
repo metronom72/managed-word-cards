@@ -1,6 +1,5 @@
 import {Word} from './word';
-import {Lesson} from './lesson';
-import {v4 as uuid} from 'uuid';
+import {Group} from './group';
 
 export const generateGroups = (words: Word[], capacity: number): Group[] => {
   const groups = [];

@@ -5,17 +5,38 @@
   ></app-file-upload>
   <clr-input-container>
     <label for="title">Введите название</label>
-    <input clrInput type="text" name="title" id="title" />
+    <input [(ngModel)]="lesson.title"
+           type="text"
+           name="title"
+           id="title"
+           minlength="6"
+           clrInput
+           required
+    />
   </clr-input-container>
   <clr-input-container>
-    <label for="target_language">Язык оригинала</label>
-    <input clrInput type="text" name="targetLanguage" id="target_language" />
+    <label for="original_language">Язык оригинала</label>
+    <input [(ngModel)]="lesson.targetLanguage"
+           type="text"
+           name="targetLanguage"
+           id="target_language"
+           clrInput
+           required
+    />
   </clr-input-container>
   <clr-input-container>
     <label for="target_language">Язык перевода</label>
-    <input clrInput type="text" name="originalLanguage" id="original_language" />
+    <input [(ngModel)]="lesson.originalLanguage"
+           type="text"
+           name="originalLanguage"
+           id="original_language"
+           clrInput
+           required
+    />
   </clr-input-container>
-  <app-manage-group *ngFor="let group of form.groups.slice((pagination.current - 1) * pagination.perPage, pagination.current * pagination.perPage); let i = index "
+  <br />
+  <hr *ngIf="lesson.groups.length > 0" />
+  <app-manage-group *ngFor="let group of lesson.groups.slice((pagination.current - 1) * pagination.perPage, pagination.current * pagination.perPage); let i = index "
                     [group]="group"
                     [index]="(pagination.current - 1) * pagination.perPage + i"
   ></app-manage-group>

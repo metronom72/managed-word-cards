@@ -1,21 +1,27 @@
 <clr-datagrid>
   <clr-dg-column class="cell cell--id">id</clr-dg-column>
-  <clr-dg-column class="cell">german</clr-dg-column>
+  <clr-dg-column class="cell cell--language">german</clr-dg-column>
   <clr-dg-column class="cell">translation</clr-dg-column>
   <clr-dg-column class="cell cell--remove"></clr-dg-column>
   <clr-dg-row *ngFor="let word of words">
     <clr-dg-cell class="cell cell--id">{{word.index + 1}}</clr-dg-cell>
     <clr-dg-cell class="cell">
-      <clr-input-helper>
-        <input [value]="word.original" reqiured />
+      <clr-input-container>
+        <input [(ngModel)]="word.original"
+               clrInput
+               required
+        />
         <clr-control-error>Обязательное поле</clr-control-error>
-      </clr-input-helper>
+      </clr-input-container>
     </clr-dg-cell>
     <clr-dg-cell class="cell">
-      <clr-input-helper>
-        <input [value]="word.target" reqiured />
+      <clr-input-container>
+        <input [(ngModel)]="word.target"
+               clrInput
+               required
+        />
         <clr-control-error>Обязательное поле</clr-control-error>
-      </clr-input-helper>
+      </clr-input-container>
     </clr-dg-cell>
     <clr-dg-cell (click)="removeWord(word.id)" class="cell cell--remove">
       Удалить карточку

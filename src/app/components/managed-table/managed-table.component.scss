@@ -1,12 +1,15 @@
 .cell {
   width: 300px !important;
-  input {
-    border: 1px solid hsl(198, 0%, 55%);
-    padding: 10px 3px;
-    width: 200px;
-  }
+  //input {
+  //  border: 1px solid hsl(198, 0%, 55%);
+  //  padding: 10px 3px;
+  //  width: 200px;
+  //}
   &--id {
     width: 20px !important;
     min-width: 20px
+  }
+  &--language {
+    padding-left: 20px;
   }
 }

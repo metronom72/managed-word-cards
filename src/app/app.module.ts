@@ -19,6 +19,7 @@ import { ManagedTableComponent } from './components/managed-table/managed-table.
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ManageGroupComponent } from './components/manage-group/manage-group.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,14 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     ManageGroupComponent,
     PaginationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ClarityModule,
-    BrowserAnimationsModule,
-    NgxDropzoneModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ClarityModule,
+        BrowserAnimationsModule,
+        NgxDropzoneModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
