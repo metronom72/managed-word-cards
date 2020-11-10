@@ -15,8 +15,9 @@
     <label for="target_language">Язык перевода</label>
     <input clrInput type="text" name="originalLanguage" id="original_language" />
   </clr-input-container>
-  <app-manage-group *ngFor="let group of form.groups.slice((pagination.current - 1) * pagination.perPage, pagination.current * pagination.perPage)"
+  <app-manage-group *ngFor="let group of form.groups.slice((pagination.current - 1) * pagination.perPage, pagination.current * pagination.perPage); let i = index "
                     [group]="group"
+                    [index]="(pagination.current - 1) * pagination.perPage + i"
   ></app-manage-group>
   <app-pagination [pagination]="pagination" [setPage]="onNextPage"></app-pagination>
   <div>

@@ -1,5 +1,5 @@
 <clr-input-container>
-  <label for="group.id">Название группы</label>
+  <label for="group.id">{{index + 1}}. Название группы</label>
   <input clrInput type="text" name="group.title" id="group.id" />
 </clr-input-container>
 <app-managed-table [words]="group.words"></app-managed-table>

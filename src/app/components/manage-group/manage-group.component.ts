@@ -8,6 +8,7 @@ import {Group} from '../../core/group';
 })
 export class ManageGroupComponent implements OnInit {
   @Input() group: Group = null;
+  @Input() index: number;
 
   constructor() { }
 
