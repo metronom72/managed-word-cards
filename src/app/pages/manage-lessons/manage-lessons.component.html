@@ -15,45 +15,10 @@
     <label for="target_language">Язык перевода</label>
     <input clrInput type="text" name="originalLanguage" id="original_language" />
   </clr-input-container>
-  <app-manage-group *ngFor="let group of groups.slice(pagination.current - 1, pagination.perPage)" [group]="group"></app-manage-group>
-  <div
-    *ngIf="!pagination.disabled"
-    class="btn-group btn-outline-primary btn-sm"
-  >
-    <button
-      *ngIf="pagination.canPrev"
-      (click)="onNextPage(pagination.current - 1)"
-      class="btn"
-    >Пред.</button>
-    <button
-      *ngIf="pagination.current !== 1"
-      (click)="onNextPage(1)"
-      class="btn"
-    >1</button>
-    <button
-      *ngIf="pagination.leftDots"
-      class="btn"
-      disabled
-    >...</button>
-    <button
-      class="btn btn-primary"
-    >{{pagination.current}}</button>
-    <button
-      *ngIf="pagination.rightDots"
-      class="btn"
-      disabled
-    >...</button>
-    <button
-      *ngIf="pagination.current !== pagination.last"
-      (click)="onNextPage(pagination.last)"
-      class="btn"
-    >{{pagination.last}}</button>
-    <button
-      *ngIf="pagination.canNext"
-      (click)="onNextPage(pagination.current + 1)"
-      class="btn"
-    >След.</button>
-  </div>
+  <app-manage-group *ngFor="let group of form.groups.slice((pagination.current - 1) * pagination.perPage, pagination.current * pagination.perPage)"
+                    [group]="group"
+  ></app-manage-group>
+  <app-pagination [pagination]="pagination" [setPage]="onNextPage"></app-pagination>
   <div>
     <button class="btn btn-sm btn-primary">Сохранить</button>
   </div>

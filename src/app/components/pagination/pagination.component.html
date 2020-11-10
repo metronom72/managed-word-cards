@@ -1,0 +1,39 @@
+
+<div
+  *ngIf="!pagination.disabled"
+  class="btn-group btn-outline-primary btn-sm"
+>
+  <button
+    *ngIf="pagination.canPrev"
+    (click)="onSetPage(pagination.current - 1)"
+    class="btn"
+  >Пред.</button>
+  <button
+    *ngIf="pagination.current !== 1"
+    (click)="onSetPage(1)"
+    class="btn"
+  >1</button>
+  <button
+    *ngIf="pagination.leftDots"
+    class="btn"
+    disabled
+  >...</button>
+  <button
+    class="btn btn-primary"
+  >{{pagination.current}}</button>
+  <button
+    *ngIf="pagination.rightDots"
+    class="btn"
+    disabled
+  >...</button>
+  <button
+    *ngIf="pagination.current !== pagination.last"
+    (click)="onSetPage(pagination.last)"
+    class="btn"
+  >{{pagination.last}}</button>
+  <button
+    *ngIf="pagination.canNext"
+    (click)="onSetPage(pagination.current + 1)"
+    class="btn"
+  >След.</button>
+</div>

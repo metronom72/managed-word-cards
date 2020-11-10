@@ -3,6 +3,6 @@ export interface Word {
   target: string;
   originalLanguage?: string;
   targetLanguage?: string;
-  id: string;
+  id?: string;
   index: number;
 }

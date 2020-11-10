@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { parse } from 'papaparse';
-import {generateLessons} from '../../core/lesson-utils';
+import {generateGroups} from '../../core/lesson-utils';
 import {Lesson} from '../../core/lesson';
 import {generatePagination, Pagination} from '../../core/pagination';
-import {generate} from 'rxjs';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Group} from '../../core/group';
 
 @Component({
   selector: 'app-manage-lessons',
@@ -11,7 +12,6 @@ import {generate} from 'rxjs';
   styleUrls: ['./manage-lessons.component.scss']
 })
 export class ManageLessonsComponent implements OnInit {
-  public groups: Lesson[] = [];
 
   public pagination: Pagination = {
     current: 1,
@@ -25,20 +25,27 @@ export class ManageLessonsComponent implements OnInit {
     disabled: true,
   };
 
+  public form: Lesson = {
+    title: '',
+    originalLanguage: '',
+    targetLanguage: '',
+    groups: [],
+  };
+
   onSelect = (file) => {
     const reader = new FileReader();
     reader.onload = (event) => {
       const rows = parse(event.target.result, {
         header: true
       }).data;
-      this.groups = generateLessons(rows, 20);
-      this.pagination = generatePagination(this.groups.length, 1, 4);
+      this.form.groups = generateGroups(rows, 20);
+      this.pagination = generatePagination(this.form.groups.length, 1, 4);
     };
     reader.readAsText(file);
   }
 
   onRemove = (event) => {
-    this.groups = [];
+    this.form.groups = [];
     this.pagination = generatePagination(0, 1, 4);
   }
 

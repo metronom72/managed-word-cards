@@ -5,5 +5,5 @@ export interface Lesson {
   groups: Group[];
   targetLanguage: string;
   originalLanguage: string;
-  id: string;
+  id?: string;
 }

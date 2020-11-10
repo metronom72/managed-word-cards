@@ -2,21 +2,19 @@ import {Word} from './word';
 import {Lesson} from './lesson';
 import {v4 as uuid} from 'uuid';
 
-export const generateLessons = (words: Word[], capacity: number): Lesson[] => {
-  const lessons = [];
+export const generateGroups = (words: Word[], capacity: number): Group[] => {
+  const groups = [];
   while (words.length > 0) {
-    lessons.push({
+    groups.push({
       words: words.splice(0, capacity).map((word: any, index) => ({
         ...word,
         original: word.russian,
         target: word.german,
         index,
-        id: uuid(),
       })),
       title: '',
-      id: uuid(),
     });
   }
 
-  return lessons;
+  return groups;
 };

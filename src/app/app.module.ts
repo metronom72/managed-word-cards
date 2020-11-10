@@ -18,6 +18,7 @@ import { CardActionsComponent } from './components/card-actions/card-actions.com
 import { ManagedTableComponent } from './components/managed-table/managed-table.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ManageGroupComponent } from './components/manage-group/manage-group.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ManageGroupComponent } from './components/manage-group/manage-group.com
     CardActionsComponent,
     ManagedTableComponent,
     FileUploadComponent,
-    ManageGroupComponent
+    ManageGroupComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

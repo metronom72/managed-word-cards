@@ -12,7 +12,6 @@ export interface Pagination {
 
 export const generatePagination = (total: number, current: number, perPage: number) => {
   const last: number = Math.ceil(total / perPage);
-  console.log(total, current, perPage, last);
   return {
     total,
     last,
