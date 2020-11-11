@@ -25,14 +25,14 @@ export class ManageLessonsComponent implements OnInit {
     disabled: true,
   };
 
-  lesson: Lesson = {
+  public lesson: Lesson = {
     title: '',
     originalLanguage: '',
     targetLanguage: '',
     groups: [],
   };
 
-  onSelect = (file) => {
+  public onSelect = (file) => {
     const reader = new FileReader();
     reader.onload = (event) => {
       const rows = parse(event.target.result, {
@@ -44,12 +44,12 @@ export class ManageLessonsComponent implements OnInit {
     reader.readAsText(file);
   }
 
-  onRemove = (event) => {
+  public onRemove = (event) => {
     this.lesson.groups = [];
     this.pagination = generatePagination(0, 1, 4);
   }
 
-  onNextPage = (current: number) => {
+  public onNextPage = (current: number) => {
     this.pagination = generatePagination(this.pagination.total, current, this.pagination.perPage);
     return false;
   }
