@@ -1,46 +1,82 @@
-<form clrForm>
+<form clrForm [formGroup]="lesson">
   <app-file-upload
     (selectFile)="onSelect($event)"
     (removeFile)="onRemove($event)"
   ></app-file-upload>
   <clr-input-container>
     <label for="title">Введите название</label>
-    <input [(ngModel)]="lesson.title"
+    <input formControlName="title"
            type="text"
            name="title"
            id="title"
            minlength="6"
            clrInput
-           required
     />
+    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+      Name is required.
+    </div>
   </clr-input-container>
   <clr-input-container>
     <label for="original_language">Язык оригинала</label>
-    <input [(ngModel)]="lesson.targetLanguage"
+    <input formControlName="targetLanguage"
            type="text"
            name="targetLanguage"
            id="target_language"
            clrInput
-           required
     />
+    <div *ngIf="targetLanguage.invalid && (targetLanguage.dirty || targetLanguage.touched)">
+      Name is required.
+    </div>
   </clr-input-container>
   <clr-input-container>
     <label for="target_language">Язык перевода</label>
-    <input [(ngModel)]="lesson.originalLanguage"
+    <input formControlName="originalLanguage"
            type="text"
            name="originalLanguage"
            id="original_language"
            clrInput
-           required
     />
+    <div *ngIf="originalLanguage.invalid && (originalLanguage.dirty || originalLanguage.touched)">
+      Name is required.
+    </div>
   </clr-input-container>
   <br />
-  <hr *ngIf="lesson.groups.length > 0" />
-  <app-manage-group *ngFor="let group of lesson.groups.slice((pagination.current - 1) * pagination.perPage, pagination.current * pagination.perPage); let i = index "
-                    [group]="group"
-                    [index]="(pagination.current - 1) * pagination.perPage + i"
-  ></app-manage-group>
-  <app-pagination [pagination]="pagination" [setPage]="onNextPage"></app-pagination>
+  <hr *ngIf="groups.value.length > 0" />
+  <clr-stack-view *ngIf="groups.value.length > 0">
+    <clr-stack-block *ngFor="let group of groups.value; let i = index"
+                     [clrStackViewLevel]="1"
+                     [clrStackViewSetsize]="2"
+                     [clrStackViewPosinset]="i"
+                     [clrSbExpandable]="true"
+                     [clrSbExpanded]="i===expanded"
+                     (clrSbExpandedChange)="onExpand(i)"
+    >
+      <clr-stack-label>
+        {{group.title || "Not defined"}}
+      </clr-stack-label>
+      <clr-stack-block [clrStackViewLevel]="2"
+                       [clrStackViewSetsize]="1"
+                       [clrStackViewPosinset]="1"
+                       *ngIf="i===expanded"
+                       class="secondary-stack"
+      >
+        <clr-stack-content>
+          <clr-input-container>
+            <label>{{i + 1}}. Название группы</label>
+            <input [(ngModel)]="group.title"
+                   [ngModelOptions]="{standalone: true}"
+                   type="text"
+                   name="group.title"
+                   clrInput
+                   required
+            />
+          </clr-input-container>
+          <app-managed-table [words]="group.words"></app-managed-table>
+          <hr />
+        </clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-block>
+  </clr-stack-view>
   <div>
     <button class="btn btn-sm btn-primary">Сохранить</button>
   </div>
