@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Word } from '../../core/word';
 import { v4 as uuid } from 'uuid';
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-managed-table',
@@ -8,22 +9,22 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./managed-table.component.scss']
 })
 export class ManagedTableComponent implements OnInit {
-  @Input() words: Word[] = [];
+  @Input() words: FormArray = new FormArray([], []);
 
   constructor() { }
 
   ngOnInit(): void { }
 
   removeWord = (id: string) => {
-    this.words = this.words.filter((word) => word.id !== id);
+    this.words.setValue(this.words.getRawValue().filter((word) => word.id !== id));
   }
 
   addWord = () => {
-    this.words.push({
-      original: '',
-      target: '',
-      id: uuid(),
-      index: this.words.length,
-    });
+    this.words.push(new FormGroup({
+      original: new FormControl('', [Validators.required]),
+      target: new FormControl('', [Validators.required]),
+      id: new FormControl(uuid(), []),
+      index: new FormControl(this.words.length, []),
+    }));
   }
 }

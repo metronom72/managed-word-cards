@@ -12,7 +12,7 @@
            minlength="6"
            clrInput
     />
-    <div *ngIf="title.invalid && (title.dirty || title.touched)">
+    <div *ngIf="lessonTitle.invalid && (lessonTitle.dirty || lessonTitle.touched)">
       Name is required.
     </div>
   </clr-input-container>
@@ -42,36 +42,36 @@
   </clr-input-container>
   <br />
   <hr *ngIf="groups.value.length > 0" />
-  <clr-stack-view *ngIf="groups.value.length > 0">
-    <clr-stack-block *ngFor="let group of groups.value; let i = index"
-                     [clrStackViewLevel]="1"
-                     [clrStackViewSetsize]="2"
-                     [clrStackViewPosinset]="i"
-                     [clrSbExpandable]="true"
+  <clr-stack-view *ngIf="groups.value.length > 0" [formArrayName]="groups">
+    <clr-stack-block *ngFor="let group of groups.value.controls; let i = index"
+                     [formGroup]="group"
+                     clrStackViewLevel="1"
+                     clrStackViewSetsize="2"
+                     clrStackViewPosinset="i"
+                     clrSbExpandable="true"
                      [clrSbExpanded]="i===expanded"
                      (clrSbExpandedChange)="onExpand(i)"
     >
       <clr-stack-label>
-        {{group.title || "Not defined"}}
+<!--        {{group.get('title') || "Not defined"}}-->
       </clr-stack-label>
-      <clr-stack-block [clrStackViewLevel]="2"
-                       [clrStackViewSetsize]="1"
-                       [clrStackViewPosinset]="1"
+      <clr-stack-block clrStackViewLevel="2"
+                       clrStackViewSetsize="1"
+                       clrStackViewPosinset="1"
                        *ngIf="i===expanded"
                        class="secondary-stack"
       >
         <clr-stack-content>
           <clr-input-container>
             <label>{{i + 1}}. Название группы</label>
-            <input [(ngModel)]="group.title"
-                   [ngModelOptions]="{standalone: true}"
-                   type="text"
-                   name="group.title"
-                   clrInput
-                   required
-            />
+<!--            <input formControlName="title"-->
+<!--                   type="text"-->
+<!--                   name="group.title"-->
+<!--                   clrInput-->
+<!--                   required-->
+<!--            />-->
           </clr-input-container>
-          <app-managed-table [words]="group.words"></app-managed-table>
+<!--          <app-managed-table [words]="group.get('words')"></app-managed-table>-->
           <hr />
         </clr-stack-content>
       </clr-stack-block>

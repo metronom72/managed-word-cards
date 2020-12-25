@@ -3,30 +3,30 @@
   <clr-dg-column class="cell cell--language">german</clr-dg-column>
   <clr-dg-column class="cell">translation</clr-dg-column>
   <clr-dg-column class="cell cell--remove"></clr-dg-column>
-  <clr-dg-row *ngFor="let word of words">
-    <clr-dg-cell class="cell cell--id">{{word.index + 1}}</clr-dg-cell>
-    <clr-dg-cell class="cell">
-      <clr-input-container>
-        <input [(ngModel)]="word.original"
-               clrInput
-               required
-        />
-        <clr-control-error>Обязательное поле</clr-control-error>
-      </clr-input-container>
-    </clr-dg-cell>
-    <clr-dg-cell class="cell">
-      <clr-input-container>
-        <input [(ngModel)]="word.target"
-               clrInput
-               required
-        />
-        <clr-control-error>Обязательное поле</clr-control-error>
-      </clr-input-container>
-    </clr-dg-cell>
-    <clr-dg-cell (click)="removeWord(word.id)" class="cell cell--remove">
-      Удалить карточку
-    </clr-dg-cell>
-  </clr-dg-row>
+<!--  <clr-dg-row *ngFor="let word of words; let i = index">-->
+<!--    <clr-dg-cell class="cell cell&#45;&#45;id">{{i + 1}}</clr-dg-cell>-->
+<!--    <clr-dg-cell class="cell">-->
+<!--      <clr-input-container>-->
+<!--        <input [(ngModel)]="word.get('original')"-->
+<!--               clrInput-->
+<!--               required-->
+<!--        />-->
+<!--        <clr-control-error>Обязательное поле</clr-control-error>-->
+<!--      </clr-input-container>-->
+<!--    </clr-dg-cell>-->
+<!--    <clr-dg-cell class="cell">-->
+<!--      <clr-input-container>-->
+<!--        <input [(ngModel)]="word.get('target')"-->
+<!--               clrInput-->
+<!--               required-->
+<!--        />-->
+<!--        <clr-control-error>Обязательное поле</clr-control-error>-->
+<!--      </clr-input-container>-->
+<!--    </clr-dg-cell>-->
+<!--    <clr-dg-cell (click)="removeWord(word.id)" class="cell cell&#45;&#45;remove">-->
+<!--      Удалить карточку-->
+<!--    </clr-dg-cell>-->
+<!--  </clr-dg-row>-->
 </clr-datagrid>
 
 <p (click)="addWord()">

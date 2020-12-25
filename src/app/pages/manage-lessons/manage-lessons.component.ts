@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { parse } from 'papaparse';
 import {generateGroups} from '../../core/lesson-utils';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {groupValidator} from '../../core/group';
 
 @Component({
   selector: 'app-manage-lessons',
@@ -23,19 +24,11 @@ export class ManageLessonsComponent implements OnInit {
       Validators.required
     ]),
     groups: new FormControl([], [
-      Validators.required
+      Validators.required,
     ])
   });
 
-  // public lesson: Lesson = {
-  //   title: '',
-  //   originalLanguage: '',
-  //   targetLanguage: '',
-  //   groups: [],
-  // };
-
   public onExpand = (index: number) => {
-    console.log(index);
     if (this.expanded === index) {
       this.expanded = null;
     } else {
@@ -51,6 +44,8 @@ export class ManageLessonsComponent implements OnInit {
         header: true
       }).data;
       this.lesson.get('groups').setValue(generateGroups(rows, 10));
+      // this.lesson.get('groups').setValue(rows);
+      console.log(this.groups);
       this.expanded = 0;
     };
     reader.readAsText(file);
@@ -61,7 +56,7 @@ export class ManageLessonsComponent implements OnInit {
     this.expanded = 0;
   }
 
-  get title(): AbstractControl {
+  get lessonTitle(): AbstractControl {
     return this.lesson.get('title');
   }
 
@@ -74,7 +69,11 @@ export class ManageLessonsComponent implements OnInit {
   }
 
   get groups(): AbstractControl {
-    return this.lesson.get('groups');
+    return this.lesson.get('groups') as FormArray;
+  }
+
+  get words(): AbstractControl {
+    return this.groups.get('words');
   }
 
   constructor() { }
