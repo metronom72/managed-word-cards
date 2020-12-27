@@ -6,12 +6,3 @@ export interface Group {
   title?: string;
   id?: string;
 }
-
-export const groupValidator = (): ValidatorFn => {
-  return (control: AbstractControl): {[key: string]: any} | null => {
-    console.log(control);
-    // const forbidden = nameRe.test(control.value);
-    // return forbidden ? {forbiddenName: {value: control.value}} : null;
-    return null;
-  };
-};

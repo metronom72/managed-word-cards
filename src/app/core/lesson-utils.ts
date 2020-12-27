@@ -12,7 +12,10 @@ export const generateGroups = (words: Word[], capacity: number): Array<FormGroup
           .splice(0, capacity)
           .map((word: any, index) => generateWord(word, index))
       ),
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl(
+        '',
+        [Validators.required]
+      ),
     }));
   }
 
@@ -21,9 +24,21 @@ export const generateGroups = (words: Word[], capacity: number): Array<FormGroup
 
 export const generateWord = (word: any = {}, index) => {
   return new FormGroup({
-    id: new FormControl(word.id || uuid(), []),
-    original: new FormControl(word.russian || '', [Validators.required]),
-    target: new FormControl(word.german || '', [Validators.required]),
-    index: new FormControl(index, []),
+    id: new FormControl(
+      word.id || uuid(),
+      []
+    ),
+    original: new FormControl(
+      (word.russian || '').trim(),
+      [Validators.required]
+    ),
+    target: new FormControl(
+      (word.german || '').trim(),
+      [Validators.required]
+    ),
+    index: new FormControl(
+      index,
+      []
+    ),
   });
 };

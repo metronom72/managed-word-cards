@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { parse } from 'papaparse';
 import {generateGroups, generateWord} from '../../core/lesson-utils';
 import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {groupValidator} from '../../core/group';
 
 @Component({
   selector: 'app-manage-lessons',
@@ -13,19 +12,24 @@ export class ManageLessonsComponent implements OnInit {
   public expanded: number|null = null;
 
   public lesson = new FormGroup({
-    title: new FormControl('', [
-      Validators.required,
-      Validators.minLength(4)
-    ]),
-    originalLanguage: new FormControl('Russian', [
-      Validators.required,
-    ]),
-    targetLanguage: new FormControl('', [
-      Validators.required
-    ]),
-    groups: new FormArray([], [
-      Validators.required,
-    ])
+    title: new FormControl(
+      '',
+      [
+        Validators.required,
+      ]
+    ),
+    originalLanguage: new FormControl(
+      'Russian',
+      [Validators.required]
+    ),
+    targetLanguage: new FormControl(
+      '',
+      [Validators.required]
+    ),
+    groups: new FormArray(
+      [],
+      [Validators.required]
+    )
   });
 
   public onExpand = (index: number) => {
@@ -72,6 +76,10 @@ export class ManageLessonsComponent implements OnInit {
     words.push(generateWord({}, words.controls.length));
   }
 
+  public onSubmit = () => {
+    this.lesson.markAllAsTouched();
+  }
+
   public get lessonTitle(): AbstractControl {
     return this.lesson.get('title');
   }
@@ -91,6 +99,8 @@ export class ManageLessonsComponent implements OnInit {
   public words = (group: AbstractControl): FormArray => {
     return group.get('words') as FormArray;
   }
+
+  public hasError = (control: AbstractControl): boolean => !control.valid;
 
   constructor() { }
 

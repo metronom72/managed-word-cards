@@ -56,6 +56,14 @@
     >
       <clr-stack-label>
         {{group.value.title || 'Not defined'}}
+        <clr-icon *ngIf="hasError(group)"
+                  shape="exclamation-triangle"
+                  class="is-error"
+        ></clr-icon>
+        <clr-icon *ngIf="!hasError(group)"
+                  shape="success-standard"
+                  class="is-success"
+        ></clr-icon>
       </clr-stack-label>
       <clr-stack-block clrStackViewLevel="2"
                        clrStackViewSetsize="1"
@@ -119,6 +127,6 @@
     </clr-stack-block>
   </clr-stack-view>
   <div>
-    <button class="btn btn-sm btn-primary">Сохранить</button>
+    <button (click)="onSubmit()" class="btn btn-sm btn-primary">Сохранить</button>
   </div>
 </form>
