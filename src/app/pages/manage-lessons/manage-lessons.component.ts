@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { parse } from 'papaparse';
-import {generateGroups} from '../../core/lesson-utils';
+import {generateGroups, generateWord} from '../../core/lesson-utils';
 import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {groupValidator} from '../../core/group';
 
@@ -23,7 +23,7 @@ export class ManageLessonsComponent implements OnInit {
     targetLanguage: new FormControl('', [
       Validators.required
     ]),
-    groups: new FormControl([], [
+    groups: new FormArray([], [
       Validators.required,
     ])
   });
@@ -43,9 +43,9 @@ export class ManageLessonsComponent implements OnInit {
       const rows = parse(event.target.result, {
         header: true
       }).data;
-      this.lesson.get('groups').setValue(generateGroups(rows, 10));
-      // this.lesson.get('groups').setValue(rows);
-      console.log(this.groups);
+      generateGroups(rows, 10).forEach(group => {
+        this.groups.push(group);
+      });
       this.expanded = 0;
     };
     reader.readAsText(file);
@@ -56,24 +56,40 @@ export class ManageLessonsComponent implements OnInit {
     this.expanded = 0;
   }
 
-  get lessonTitle(): AbstractControl {
+  public removeWord = (groupIndex: number, wordIndex: number): void => {
+    const group = this.groups.at(groupIndex);
+    if (!group) { return; }
+    const words = this.words(group);
+    if (!words) { return; }
+    words.removeAt(wordIndex);
+  }
+
+  public addWord = (groupIndex: number): void => {
+    const group = this.groups.at(groupIndex);
+    if (!group) { return; }
+    const words = this.words(group);
+    if (!words) { return; }
+    words.push(generateWord({}, words.controls.length));
+  }
+
+  public get lessonTitle(): AbstractControl {
     return this.lesson.get('title');
   }
 
-  get originalLanguage(): AbstractControl {
+  public get originalLanguage(): AbstractControl {
     return this.lesson.get('originalLanguage');
   }
 
-  get targetLanguage(): AbstractControl {
+  public get targetLanguage(): AbstractControl {
     return this.lesson.get('targetLanguage');
   }
 
-  get groups(): AbstractControl {
+  public get groups(): FormArray {
     return this.lesson.get('groups') as FormArray;
   }
 
-  get words(): AbstractControl {
-    return this.groups.get('words');
+  public words = (group: AbstractControl): FormArray => {
+    return group.get('words') as FormArray;
   }
 
   constructor() { }

@@ -41,37 +41,78 @@
     </div>
   </clr-input-container>
   <br />
-  <hr *ngIf="groups.value.length > 0" />
-  <clr-stack-view *ngIf="groups.value.length > 0" [formArrayName]="groups">
-    <clr-stack-block *ngFor="let group of groups.value.controls; let i = index"
-                     [formGroup]="group"
+  <hr *ngIf="groups.controls.length > 0" />
+  <clr-stack-view *ngIf="groups.controls.length > 0"
+                  formArrayName="groups"
+  >
+    <clr-stack-block *ngFor="let group of groups.controls; let groupIndex = index"
+                     [formGroupName]="groupIndex"
                      clrStackViewLevel="1"
                      clrStackViewSetsize="2"
                      clrStackViewPosinset="i"
                      clrSbExpandable="true"
-                     [clrSbExpanded]="i===expanded"
-                     (clrSbExpandedChange)="onExpand(i)"
+                     [clrSbExpanded]="groupIndex===expanded"
+                     (clrSbExpandedChange)="onExpand(groupIndex)"
     >
       <clr-stack-label>
-<!--        {{group.get('title') || "Not defined"}}-->
+        {{group.value.title || 'Not defined'}}
       </clr-stack-label>
       <clr-stack-block clrStackViewLevel="2"
                        clrStackViewSetsize="1"
                        clrStackViewPosinset="1"
-                       *ngIf="i===expanded"
+                       *ngIf="groupIndex===expanded"
                        class="secondary-stack"
       >
         <clr-stack-content>
           <clr-input-container>
-            <label>{{i + 1}}. Название группы</label>
-<!--            <input formControlName="title"-->
-<!--                   type="text"-->
-<!--                   name="group.title"-->
-<!--                   clrInput-->
-<!--                   required-->
-<!--            />-->
+            <label>{{groupIndex + 1}}. Название группы</label>
+            <input formControlName="title"
+                   type="text"
+                   name="group.title"
+                   clrInput
+                   required
+            />
           </clr-input-container>
-<!--          <app-managed-table [words]="group.get('words')"></app-managed-table>-->
+          <clr-datagrid formArrayName="words">
+            <clr-dg-column class="cell cell--id">id</clr-dg-column>
+            <clr-dg-column class="cell cell--language">german</clr-dg-column>
+            <clr-dg-column class="cell cell--language">translation</clr-dg-column>
+            <clr-dg-column class="cell cell--remove"></clr-dg-column>
+            <clr-dg-row *ngFor="let word of words(group).controls; let wordIndex = index"
+                        [formGroupName]="wordIndex"
+            >
+              <clr-dg-cell class="cell cell--id">{{wordIndex + 1}}</clr-dg-cell>
+              <clr-dg-cell class="cell cell--wo-label cell--language">
+                <clr-input-container>
+                  <label></label>
+                  <input formControlName="original"
+                         name="word.original"
+                         clrInput
+                         required
+                  />
+                  <clr-control-error>Обязательное поле</clr-control-error>
+                </clr-input-container>
+              </clr-dg-cell>
+              <clr-dg-cell class="cell cell--wo-label cell--language">
+                <clr-input-container>
+                  <label></label>
+                  <input formControlName="target"
+                         name="word.target"
+                         clrInput
+                         required
+                  />
+                  <clr-control-error>Обязательное поле</clr-control-error>
+                </clr-input-container>
+              </clr-dg-cell>
+                  <clr-dg-cell (click)="removeWord(groupIndex, wordIndex)" class="cell cell--remove remove-link">
+                    Удалить карточку
+                  </clr-dg-cell>
+            </clr-dg-row>
+          </clr-datagrid>
+
+            <p (click)="addWord(groupIndex)" class="remove-link">
+              Добавить карточку
+            </p>
           <hr />
         </clr-stack-content>
       </clr-stack-block>

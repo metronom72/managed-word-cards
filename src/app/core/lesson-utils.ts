@@ -1,21 +1,29 @@
 import {Word} from './word';
 import { v4 as uuid } from 'uuid';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Group} from './group';
 
-export const generateGroups = (words: Word[], capacity: number): FormArray => {
-  const groups = [];
+export const generateGroups = (words: Word[], capacity: number): Array<FormGroup> => {
+  const groups: Array<FormGroup> = [];
   while (words.length > 0) {
     groups.push(new FormGroup({
-      words: new FormArray(words.splice(0, capacity).map((word: any, index) => (new FormGroup({
-        // ...word,
-        id: new FormControl(word.id || uuid(), []),
-        original: new FormControl(word.russian, [Validators.required]),
-        target: new FormControl(word.german, [Validators.required]),
-        index: new FormControl(index, []),
-      })))),
+      words: new FormArray(
+        words
+          .splice(0, capacity)
+          .map((word: any, index) => generateWord(word, index))
+      ),
       title: new FormControl('', [Validators.required]),
     }));
   }
 
-  return new FormArray(groups, []);
+  return groups;
+};
+
+export const generateWord = (word: any = {}, index) => {
+  return new FormGroup({
+    id: new FormControl(word.id || uuid(), []),
+    original: new FormControl(word.russian || '', [Validators.required]),
+    target: new FormControl(word.german || '', [Validators.required]),
+    index: new FormControl(index, []),
+  });
 };

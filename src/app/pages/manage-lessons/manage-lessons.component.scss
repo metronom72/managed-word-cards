@@ -1,3 +1,29 @@
 ::ng-deep .secondary-stack .stack-view-key {
   display: none;
 }
+
+.cell {
+  text-align: left;
+  &--id {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+  }
+  &--wo-label {
+    label {
+      display: none;
+    }
+  }
+  &--language {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+.remove-link {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

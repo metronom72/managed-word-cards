@@ -15,9 +15,7 @@ import { ManageLessonsComponent } from './pages/manage-lessons/manage-lessons.co
 import { CardHeaderComponent } from './components/card-header/card-header.component';
 import { CardFooterComponent } from './components/card-footer/card-footer.component';
 import { CardActionsComponent } from './components/card-actions/card-actions.component';
-import { ManagedTableComponent } from './components/managed-table/managed-table.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
-import { ManageGroupComponent } from './components/manage-group/manage-group.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -33,9 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CardHeaderComponent,
     CardFooterComponent,
     CardActionsComponent,
-    ManagedTableComponent,
     FileUploadComponent,
-    ManageGroupComponent,
     PaginationComponent
   ],
     imports: [
