@@ -6,22 +6,22 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
-  constructor() { }
-
   public file: File | null = null;
 
-  @Output() selectFile: EventEmitter<any> = new EventEmitter<any>();
-  @Output() removeFile: EventEmitter<any> = new EventEmitter<any>();
+  public constructor() { }
 
-  ngOnInit(): void { }
+  @Output() public selectFile: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public removeFile: EventEmitter<any> = new EventEmitter<any>();
 
-  onSelect = (file) => {
+  public ngOnInit(): void { }
+
+  public onSelect = (file) => {
     this.file = file.addedFiles[0];
     this.selectFile.emit(file.addedFiles[0]);
-  }
+  };
 
-  onRemove = (event) => {
+  public onRemove = (event) => {
     this.file = null;
     this.removeFile.emit(event);
-  }
+  };
 }

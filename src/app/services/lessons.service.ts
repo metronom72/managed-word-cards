@@ -5,7 +5,7 @@ import {Lesson} from '../core/lesson';
   providedIn: 'root'
 })
 export class LessonsService {
-  constructor() { }
+  public constructor() { }
 
   public lessons: Lesson[] = [];
 }

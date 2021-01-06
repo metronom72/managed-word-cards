@@ -14,7 +14,7 @@ export class NavigationComponent implements OnInit {
 
   public expanded = [];
 
-  constructor() { }
+  public constructor() { }
 
-  ngOnInit(): void { }
+  public ngOnInit(): void { }
 }

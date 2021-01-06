@@ -22,8 +22,7 @@ export const generateGroups = (words: Word[], capacity: number): Array<FormGroup
   return groups;
 };
 
-export const generateWord = (word: any = {}, index) => {
-  return new FormGroup({
+export const generateWord = (word: any = {}, index) => new FormGroup({
     id: new FormControl(
       word.id || uuid(),
       []
@@ -41,4 +40,3 @@ export const generateWord = (word: any = {}, index) => {
       []
     ),
   });
-};
