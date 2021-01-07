@@ -38,7 +38,7 @@ export class ManageLessonsComponent implements OnInit {
     } else {
       this.expanded = index;
     }
-  }
+  };
 
   public onSelect = (file) => {
     const reader = new FileReader();
@@ -53,12 +53,12 @@ export class ManageLessonsComponent implements OnInit {
       this.expanded = 0;
     };
     reader.readAsText(file);
-  }
+  };
 
   public onRemove = (event) => {
     this.lesson.get('groups').setValue([]);
     this.expanded = 0;
-  }
+  };
 
   public removeWord = (groupIndex: number, wordIndex: number): void => {
     const group = this.groups.at(groupIndex);
@@ -66,7 +66,7 @@ export class ManageLessonsComponent implements OnInit {
     const words = this.words(group);
     if (!words) { return; }
     words.removeAt(wordIndex);
-  }
+  };
 
   public addWord = (groupIndex: number): void => {
     const group = this.groups.at(groupIndex);
@@ -74,11 +74,11 @@ export class ManageLessonsComponent implements OnInit {
     const words = this.words(group);
     if (!words) { return; }
     words.push(generateWord({}, words.controls.length));
-  }
+  };
 
   public onSubmit = () => {
     this.lesson.markAllAsTouched();
-  }
+  };
 
   public get lessonTitle(): AbstractControl {
     return this.lesson.get('title');
@@ -96,13 +96,11 @@ export class ManageLessonsComponent implements OnInit {
     return this.lesson.get('groups') as FormArray;
   }
 
-  public words = (group: AbstractControl): FormArray => {
-    return group.get('words') as FormArray;
-  }
+  public words = (group: AbstractControl): FormArray => group.get('words') as FormArray;
 
   public hasError = (control: AbstractControl): boolean => !control.valid;
 
-  constructor() { }
+  public constructor() { }
 
-  ngOnInit(): void { }
+  public ngOnInit(): void { }
 }

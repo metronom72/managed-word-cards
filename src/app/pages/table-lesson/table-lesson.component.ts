@@ -8,9 +8,9 @@ import {Group} from '../../core/group';
 })
 export class TableLessonComponent implements OnInit {
 
-  words: Group = null;
+  public words: Group = null;
 
-  constructor() { }
+  public constructor() { }
 
-  ngOnInit(): void { }
+  public ngOnInit(): void { }
 }

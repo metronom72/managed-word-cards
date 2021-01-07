@@ -7,17 +7,17 @@ import {Pagination} from '../../core/pagination';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-  @Input() pagination: Pagination;
+  @Input() public pagination: Pagination;
 
-  @Input() setPage: (page: number) => void;
+  @Input() public setPage: (page: number) => void;
 
-  onSetPage = (current: number) => {
+  public onSetPage = (current: number) => {
     this.setPage(current);
     return false;
-  }
+  };
 
-  constructor() { }
+  public constructor() { }
 
-  ngOnInit(): void { }
+  public ngOnInit(): void { }
 
 }
