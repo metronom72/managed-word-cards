@@ -1,19 +1,9 @@
-runtime: python27
-api_version: 1
-threadsafe: true
-handlers:
-- url: /
-  static_files: dist/managed-word-cards/index.html
-  upload: dist/managed-word-cards/index.html
-- url: /
-  static_dir: dist/managed-word-cards
+runtime: python38
+instance_class: F1
 
-skip_files:
-  - e2e/
-  - node_modules/
-  - src/
-  - ^(.*/)?\..*$
-  - ^(.*/)?.*\.json$
-  - ^(.*/)?.*\.md$
-  - ^(.*/)?.*\.yaml$
-  - ^LICENSE
+handlers:
+  - url: /
+    static_files: dist/managed-word-cards/index.html
+    upload: dist/managed-word-cards/index.html
+  - url: /
+    static_dir: dist/managed-word-cards
