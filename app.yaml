@@ -7,4 +7,3 @@ handlers:
     upload: dist/managed-word-cards/index.html
   - url: /
     static_dir: dist/managed-word-cards
-
